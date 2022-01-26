@@ -56,6 +56,7 @@ public class Teste {
 
                 Connection conn = DriverManager.getConnection(url, props);
 
+                // CADASTRAR OS DADOS DIGITADOS PELO USUÁRIO
                 if (Character.toUpperCase(insert) == 'S') {
                     PreparedStatement ps = conn.prepareStatement("INSERT INTO pessoa (nome, idade, endereco) VALUES (?, ?, ?)");
                     ps.setString(1, p.getNome());
@@ -65,6 +66,7 @@ public class Teste {
                     ps.close();
                 }
 
+                // LISTAR TODOS OS REGISTROS DA TABELA "pessoa"
                 Statement st = conn.createStatement();
                 ResultSet rs = st.executeQuery("SELECT nome, idade, endereco FROM pessoa ORDER BY nome");
                 while (rs.next()) {
